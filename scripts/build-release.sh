@@ -50,6 +50,10 @@ export splunk_pkg_path=./tmp/splunk-linux-x86_64.tgz
 export splunk_version_path=./tmp/splunk-version.txt
 export splunk_pkg_remote=https://download.splunk.com/products/splunk/releases/6.5.1/linux/splunk-6.5.1-f74036626f0c-Linux-x86_64.tgz
 
+# add1 - this seems to allow the release to create
+export common_pkg_path=./packages/common/splunk-linux-x86_64.tgz
+# end add1
+
 if [ -a "${go_pkg_path}" ]; then
     echo "Go package already exist, skipping download"
 else
@@ -66,14 +70,27 @@ else
 fi
 echo "${splunk_pkg_remote}" > "${splunk_version_path}"
 
-echo "Adding blobs"
-bosh add blob "${go_pkg_path}" golang
-bosh add blob "${go_version_path}" golang
-bosh add blob "${splunk_pkg_path}" splunk
-bosh add blob "${splunk_version_path}" splunk
+# add2 - linked to add1
+if [ -a "${common_pkg_path}" ]; then
+    echo "Common package path already exists, nothing to see here"
+fi
+echo "${common_pkg_path}" done
+# end add2
 
+# amended to bosh2
+echo "Adding blobs"
+bosh2 -e vbox add-blob "${go_pkg_path}" golang/go-linux-amd64.tar.gz
+bosh2 -e vbox add-blob "${go_version_path}" golang/go-version.txt
+bosh2 -e vbox add-blob "${splunk_pkg_path}" splunk/splunk-linux-x86_64.tgz
+bosh2 -e vbox add-blob "${splunk_version_path}" splunk/splunk-version.txt
+
+#add3 - linked to add1 and add2
+bosh2 -e vbox add-blob "${common_pkg_path}" common/splunk-linux-x86_64.tgz
+# end add3
+
+# amended to bosh2
 echo "Creating release"
-create_cmd="bosh create release --name cf-splunk --with-tarball --force"
+create_cmd="bosh2 -e vbox create-release --name cf-splunk --tarball="./release.tgz" --force"
 if [ "$version" != "" ]; then
     create_cmd+=" --version "${version}""
 fi
