@@ -1,0 +1,91 @@
+compilation:
+  cloud_properties: {}
+  network: splunk_z1
+  reuse_compilation_vms: true
+  workers: 4
+director_uuid: 49ed4e42-7215-4229-9724-186d8ec3d1e5
+iaas_settings:
+  compilation_cloud_properties: {}
+  resource_pool_cloud_properties:
+  - cloud_properties: {}
+    name: splunk_z1
+  - cloud_properties: {}
+    name: errands_z1
+  stemcell:
+    name: bosh-warden-boshlite-ubuntu-trusty-go_agent
+    version: latest
+  subnet_configs:
+  - name: splunk_z1
+    subnets:
+    - cloud_properties:
+        name: random
+      range: 10.244.15.0/24
+      reserved:
+      - 10.244.15.1
+      static:
+      - 10.244.15.2 - 10.244.15.20
+  watch_time: 10000-120000
+jobs:
+- instances: 1
+  name: splunk-nozzle
+  networks:
+  - name: splunk_z1
+  resource_pool: splunk_z1
+  templates:
+  - name: splunk-forwarder
+    release: cf-splunk
+  - name: splunk-nozzle
+    release: cf-splunk
+meta:
+  director_uuid: 49ed4e42-7215-4229-9724-186d8ec3d1e5
+name: cf-splunk-forwarder
+networks:
+- name: splunk_z1
+  subnets:
+  - cloud_properties:
+      name: random
+    range: 10.244.15.0/24
+    reserved:
+    - 10.244.15.1
+    static:
+    - 10.244.15.2 - 10.244.15.20
+  type: manual
+properties:
+  cf_splunk:
+    add_app_info: false
+    api_endoint: https://api.bosh-lite.com
+    api_password: admin
+    api_user: admin
+    events:
+    - ValueMetric
+    - CounterEvent
+    - Error
+    - ContainerMetric
+    firehose_subscription_id: splunk-firehose-subscription
+    skip_ssl_validation: true
+    splunk_index: main
+    splunk_server: 192.168.50.1:9997
+    splunk_ssl: false
+    splunk_ssl_alt_name: null
+    splunk_ssl_cert: null
+    splunk_ssl_common_name: null
+    splunk_ssl_password: password
+    splunk_ssl_root_ca: null
+    splunk_token: 46D19381-22DF-497F-A6E8-F88F12079823
+releases:
+- name: cf-splunk
+  version: latest
+resource_pools:
+- cloud_properties: {}
+  name: splunk_z1
+  network: splunk_z1
+  stemcell:
+    name: bosh-warden-boshlite-ubuntu-trusty-go_agent
+    version: latest
+update:
+  canaries: 1
+  canary_watch_time: 10000-120000
+  max_in_flight: 1
+  serial: true
+  update_watch_time: 10000-120000
+
