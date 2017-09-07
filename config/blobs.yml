@@ -1,1 +1,15 @@
---- {} 
+common/splunk-linux-x86_64.tgz:
+  size: 222768270
+  sha: c8fd65cd691b797c52bd650e56a7ba5dd947b615
+golang/go-linux-amd64.tar.gz:
+  size: 84021919
+  sha: 2e5baf03d1590e048c84d1d5b4b6f2540efaaea1
+golang/go-version.txt:
+  size: 65
+  sha: f369bdd973099d4b9e212384bbecb880ad7ba5e1
+splunk/splunk-linux-x86_64.tgz:
+  size: 222768270
+  sha: c8fd65cd691b797c52bd650e56a7ba5dd947b615
+splunk/splunk-version.txt:
+  size: 108
+  sha: 79483b733d45199615f006a36cb11897db49637c
