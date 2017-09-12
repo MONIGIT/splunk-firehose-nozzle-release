@@ -1,6 +1,18 @@
+#updated - brybinary (tested in local bosh-lite & GCP)
+
 # splunk-firehose-nozzle-release
 
-Bosh-managed deployment of Splunk nozzle for Cloud Foundry firehose along with pre-configured Splunk Forwarder
+1: Bosh-managed deployment of Splunk nozzle for Cloud Foundry firehose along with pre-configured Splunk Forwarder
+2: BOSH deployed enterprise node in GCP (via bastion)
+
+## pre-req's (mac)
+# for local - virtualbox
+# for GCP - gcp account and also bosh bastion/nats available
+# install bosh cli (v2), cf-cli, bosh-init
+#  install spiff
+brew tap xoebus/homebrew-cloudfoundry
+brew install spiff
+
 
 ## Dev
 
@@ -11,6 +23,12 @@ Local development
 ```
 bosh upload stemcell ~/Desktop/bosh/bosh-stemcell-XXXX.X-warden-boshlite-ubuntu-trusty-go_agent.tgz
 ```
+
+# wget a stemcell for testing with
+wget --content-disposition https://bosh.io/d/stemcells/bosh-warden-boshlite-ubuntu-trusty-go_agent
+
+# upload the stemcell (command for later use)
+bosh -e vbox upload-stemcell bosh-stemcell-*-warden-boshlite-ubuntu-trusty-go_agent.tgz
 
 * Pull latest submodules, namely `src/splunk-firehose-nozzle`
 ```
