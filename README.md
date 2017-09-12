@@ -1,17 +1,23 @@
 #updated - brybinary (tested in local bosh-lite & GCP)
 
-# splunk-firehose-nozzle-release
+# splunk-firehose-nozzle-release + basic splunk enterprise server install (forwarder | index/search head)
 
 * 1: Bosh-managed deployment of Splunk nozzle for Cloud Foundry firehose along with pre-configured Splunk Forwarder
 * 2: BOSH deployed enterprise node in GCP (via bastion)
 
 ### pre-req's (mac)
 for local - virtualbox
-for GCP - gcp account and also bosh bastion/nats available
+for GCP - gcp account and also bosh bastion/nats env available
+make sure you have mac dev tools
+* xcode-select --install
 install bosh cli (v2), cf-cli, bosh-init
 ## install spiff
 * brew tap xoebus/homebrew-cloudfoundry
 * brew install spiff
+
+## install bosh-cli
+* brew tap cloudfoundry/tap
+* brew install <cf-cli | bosh-init | bosh-cli | credhub-cli | bbl> 
 
 
 ## LOCAL BOSH-LITE install process.
