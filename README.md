@@ -2,16 +2,16 @@
 
 # splunk-firehose-nozzle-release
 
-1: Bosh-managed deployment of Splunk nozzle for Cloud Foundry firehose along with pre-configured Splunk Forwarder
-2: BOSH deployed enterprise node in GCP (via bastion)
+* 1: Bosh-managed deployment of Splunk nozzle for Cloud Foundry firehose along with pre-configured Splunk Forwarder
+* 2: BOSH deployed enterprise node in GCP (via bastion)
 
 ### pre-req's (mac)
 for local - virtualbox
 for GCP - gcp account and also bosh bastion/nats available
 install bosh cli (v2), cf-cli, bosh-init
 ## install spiff
-brew tap xoebus/homebrew-cloudfoundry
-brew install spiff
+* brew tap xoebus/homebrew-cloudfoundry
+* brew install spiff
 
 
 ## LOCAL BOSH-LITE install process.
