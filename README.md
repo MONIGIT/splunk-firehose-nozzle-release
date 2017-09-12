@@ -14,7 +14,7 @@ brew tap xoebus/homebrew-cloudfoundry
 brew install spiff
 
 
-## Dev
+## LOCAL BOSH-LITE install process. Dev
 
 Local development
 
