@@ -17,6 +17,7 @@ install bosh cli (v2), cf-cli, bosh-init
 * /scripts/GCP_build-release.sh
 * /packages/common/spec
 * splunk-firehose-nozzle-release/properties.yml
+* /GCP_cf-splunk-forwarder.yml
 
 ### commands used to run this in GCP:
 * ssh into the instance (on bosh)
