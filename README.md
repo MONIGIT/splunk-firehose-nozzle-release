@@ -1,4 +1,4 @@
-### splunk: basic splunk enterprise server install (forwarder | index/search head)
+### splunk: basic splunk enterprise server 6.5.1 install (full)
 
 * BOSH deployed splunk enterprise node in GCP (via bastion)
 
