@@ -25,7 +25,7 @@ bosh -d cf-splunk-forwarder ssh <INSTANCE ID>
 bosh -d cf-splunk-forwarder logs
 * deploy 
 bosh -d cf-splunk-forwarder-2 deploy cf-splunk-forwarder.yml
-* create release (bosh2)
+* create release (bosh)
 bosh create-release --name cf-splunk --tarball="./release.tgz" --force
 
 ## GCP BOSH process.
@@ -49,10 +49,6 @@ git submodule update --init --recursive
 ```
 
 * Upload & deploy release
-```
-bosh upload release
-bosh deploy --recreate
-```
 
 * Iterating
 
